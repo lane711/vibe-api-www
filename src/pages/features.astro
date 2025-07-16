@@ -1,0 +1,279 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Features - EdgeVibe">
+  <Header />
+  
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="container mx-auto text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6">
+        Everything you need to build
+        <span class="gradient-text">modern APIs</span>
+      </h1>
+      <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        EdgeVibe provides a complete toolkit for building, deploying, and scaling APIs with plugin-based architecture
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Features -->
+  <section class="py-20 px-6">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-16">Core Platform Features</h2>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+        <!-- Plugin Architecture -->
+        <div>
+          <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold mb-4">Plugin Architecture</h3>
+          <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            Extend your API with powerful plugins. Add authentication, file storage, analytics, caching, and more with simple npm installs. Each plugin is isolated and can be configured per tenant.
+          </p>
+          <ul class="space-y-2 text-gray-300">
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Hot-swappable plugins</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Dependency management</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Plugin marketplace</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Custom plugin development</span>
+            </li>
+          </ul>
+        </div>
+        <div class="code-block p-6">
+          <pre class="text-sm"><code><span class="text-gray-400"># Install authentication plugin</span>
+<span class="text-blue-400">npm</span> install @edgevibe/auth
+
+<span class="text-gray-400"># Add to your API</span>
+<span class="text-yellow-300">import</span> &#123; <span class="text-blue-300">auth</span> &#125; <span class="text-yellow-300">from</span> <span class="text-green-300">'@edgevibe/auth'</span>
+
+<span class="text-blue-300">edgevibe</span>.<span class="text-yellow-300">use</span>(<span class="text-blue-300">auth</span>(&#123;
+  <span class="text-blue-300">providers</span>: [<span class="text-green-300">'google'</span>, <span class="text-green-300">'github'</span>],
+  <span class="text-blue-300">jwt</span>: &#123; <span class="text-blue-300">secret</span>: <span class="text-blue-300">env</span>.<span class="text-blue-300">JWT_SECRET</span> &#125;
+&#125;))
+
+<span class="text-gray-400">// Auth automatically applied to all routes</span></code></pre>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+        <div class="order-2 lg:order-1 code-block p-6">
+          <pre class="text-sm"><code><span class="text-gray-400">// Define your schema</span>
+<span class="text-yellow-300">const</span> <span class="text-blue-300">schema</span> = &#123;
+  <span class="text-blue-300">users</span>: &#123;
+    <span class="text-blue-300">name</span>: <span class="text-green-300">'string'</span>,
+    <span class="text-blue-300">email</span>: <span class="text-green-300">'email'</span>,
+    <span class="text-blue-300">avatar</span>: <span class="text-green-300">'file'</span>
+  &#125;,
+  <span class="text-blue-300">posts</span>: &#123;
+    <span class="text-blue-300">title</span>: <span class="text-green-300">'string'</span>,
+    <span class="text-blue-300">content</span>: <span class="text-green-300">'rich_text'</span>,
+    <span class="text-blue-300">author</span>: <span class="text-green-300">'relation:users'</span>,
+    <span class="text-blue-300">tags</span>: <span class="text-green-300">'array:string'</span>
+  &#125;
+&#125;
+
+<span class="text-gray-400">// Get full REST + GraphQL API</span>
+<span class="text-blue-300">edgevibe</span>.<span class="text-yellow-300">generateAPI</span>(<span class="text-blue-300">schema</span>)</code></pre>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold mb-4">Auto-Generated APIs</h3>
+          <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            Define your data schema and get complete REST and GraphQL APIs instantly. With advanced filtering, pagination, sorting, and relationship handling built-in.
+          </p>
+          <ul class="space-y-2 text-gray-300">
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>REST & GraphQL endpoints</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Advanced filtering & search</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Automatic documentation</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Relationship resolution</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <h3 class="text-3xl font-bold mb-4">Multi-Tenant Architecture</h3>
+          <p class="text-gray-300 text-lg leading-relaxed mb-6">
+            Built for SaaS from day one. Complete tenant isolation at the database, plugin, and API level. Perfect for building multi-tenant applications.
+          </p>
+          <ul class="space-y-2 text-gray-300">
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Database-level isolation</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Per-tenant plugin configs</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Tenant management APIs</span>
+            </li>
+            <li class="flex items-center space-x-3">
+              <span class="text-green-400">✓</span>
+              <span>Custom domains</span>
+            </li>
+          </ul>
+        </div>
+        <div class="glass-effect p-8 rounded-xl">
+          <h4 class="text-xl font-bold mb-4">Tenant Isolation</h4>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg">
+              <span class="text-gray-300">Tenant A</span>
+              <span class="text-green-400">Active</span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg">
+              <span class="text-gray-300">Tenant B</span>
+              <span class="text-yellow-400">Staging</span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg">
+              <span class="text-gray-300">Tenant C</span>
+              <span class="text-blue-400">Development</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Features Grid -->
+  <section class="py-20 px-6 bg-gray-900/50">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-center mb-16">Developer Experience</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="glass-effect p-6 rounded-xl">
+          <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">TypeScript First</h3>
+          <p class="text-gray-300">
+            Full TypeScript support with auto-generated types for your schemas and APIs.
+          </p>
+        </div>
+
+        <div class="glass-effect p-6 rounded-xl">
+          <div class="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Hot Reloading</h3>
+          <p class="text-gray-300">
+            Instant updates during development with hot reloading for schemas, plugins, and code.
+          </p>
+        </div>
+
+        <div class="glass-effect p-6 rounded-xl">
+          <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Auto Documentation</h3>
+          <p class="text-gray-300">
+            Interactive API documentation generated automatically from your schemas.
+          </p>
+        </div>
+
+        <div class="glass-effect p-6 rounded-xl">
+          <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">CLI Tools</h3>
+          <p class="text-gray-300">
+            Powerful command-line tools for project creation, development, and deployment.
+          </p>
+        </div>
+
+        <div class="glass-effect p-6 rounded-xl">
+          <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Real-time</h3>
+          <p class="text-gray-300">
+            WebSocket support, live queries, and real-time subscriptions built-in.
+          </p>
+        </div>
+
+        <div class="glass-effect p-6 rounded-xl">
+          <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Security First</h3>
+          <p class="text-gray-300">
+            Built-in authentication, authorization, rate limiting, and security best practices.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-6">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">Ready to experience the power?</h2>
+      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+        Start building your next API with EdgeVibe today
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/docs/getting-started" 
+           class="px-8 py-4 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors font-semibold text-lg">
+          Get Started Free
+        </a>
+        <a href="/demo" 
+           class="px-8 py-4 glass-effect text-white rounded-lg hover:bg-white/10 transition-colors font-semibold text-lg">
+          Try Live Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
